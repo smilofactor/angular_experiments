@@ -13,7 +13,18 @@ var gems = [
     soldOut: false,
     images: [
     ],
-    reviews: [ ],
+    reviews: [{
+    stars: 4,
+    body: "BBW: High shine != high quality",
+    author: "LouisW407@example.org",
+    createdOn: 1397490980837
+    },
+    {
+    stars: 3,
+    body: "Too much money",
+    author: "turtules@turles.org",
+    createdOn: 1397490980837
+    }],
     },
     {
     name: 'Pentagonal Gem',
@@ -66,6 +77,15 @@ app.controller('GalleryController', function() {
         this.current = newGallery || 0;
     };
 
+});
+
+app.controller('ReviewController', function() {
+    this.review = {};
+
+    this.addReview = function(product) {
+        product.reviews.push(this.review);
+        this.review = {};
+    };
 });
 
 })();
