@@ -47,7 +47,7 @@ app.controller('StoreController', function() {
 
   });
 
-app.controller("PanelController", function() {
+app.controller('PanelController', function() {
   this.tab = 1;
 
   this.selectTab = function(setTab) {
@@ -59,5 +59,13 @@ app.controller("PanelController", function() {
   };
 
   });
+
+app.controller('GalleryController', function() {
+    this.current = 0;
+    this.setCurrent = function(newGallery) {
+        this.current = newGallery || 0;
+    };
+
+});
 
 })();
