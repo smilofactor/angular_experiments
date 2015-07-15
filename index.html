@@ -40,73 +40,7 @@
 
         <button ng-show="product.canPurchase"> Add to Cart </button>
 
-     <section class="tab" ng-controller="PanelController as panel">
-        <ul class="nav nav-pills">
-
-            <li class="" ng-class="{ active:panel.isSelected(1) }">
-                <a href ng-click="panel.selectTab(1)">Description </a> 
-            </li>
-
-            <li class="" ng-class="{ active:panel.isSelected(2) }"> 
-                <a href ng-click="panel.selectTab(2)">Specification</a> 
-            </li>
-
-            <li class="" ng-class="{ active:panel.isSelected(3) }"> 
-                <a href ng-click="panel.selectTab(3)">Review</a> 
-                <div class="panel" ng-show="panel.isSelected(3)">
-
-                  <h4> Reviews </h4>
-
-                   <ul>
-                    <li ng-repeat="review in product.reviews">
-                      <blockquote>
-                        <strong>Stars: {{ review.stars }}</strong>
-                        <p>{{ review.body }}</p>
-                        <cite class="clearfix">by: {{ review.author }} on {{ review.createdOn | date }}</cite>
-                      </blockquote>
-                    </li>
-                   </ul>
-
-                  <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-                    <blockquote>
-                        <strong>Stars: {{ reviewCtrl.review.stars }}</strong>
-                        <p>{{ reviewCtrl.review.body }}</p>
-                        <cite class="clearfix">by: {{ reviewCtrl.review.author }} on {{ reviewCtrl.review.createdOn | date }}</cite>
-                    </blockquote>
-
-                   <h4>Submit a Review</h4>
-                   <fieldset class="form-group">
-                    <select class="form-control" ng-model="reviewCtrl.review.stars" required ng-options="star for stars in [5,4,3,2,1]" title="Stars">
-                      <option value="">Rate the Product</option>
-                    </select>
-                   </fieldset>
-
-                   <fieldset class="form-group">
-                       <textarea class="form-control" ng-model="reviewCtrl.review.body" required placeholder="Write a short review" title="Review"></textarea>
-                   </fieldset>
-
-                   <fieldset class="form-group">
-                       <input type="email" class="form-control" ng-model="reviewCtrl.review.author" required placeholder="example@example.org" title="Email" />
-                   </fieldset>
-
-                   <div> reviewForm is {{ reviewForm.$valid }} </div>
-                   <fieldset class="form-group">
-                     <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
-                   </fieldset>
-
-                  </form>
-
-                </div>
-            </li>
-
-        </ul>
-
-      <div class="panel">
-          <product-description ng-show="panel.isSelected(1)"></product-description>
-          <product-specs ng-show="panel.isSelected(2)"></product-specs>
-      </div>
-
-    </section>
+      <product-panels></product-panels>
 
     </div>
 

@@ -58,6 +58,8 @@ app.controller('StoreController', function() {
 
   });
 
+
+
 app.controller('PanelController', function() {
   this.tab = 1;
 
@@ -70,6 +72,7 @@ app.controller('PanelController', function() {
   };
 
   });
+
 
 app.controller('GalleryController', function() {
     this.current = 0;
@@ -89,6 +92,7 @@ app.controller('ReviewController', function() {
     };
 });
 
+
 app.directive('productDescription', function() {
     return {
         restrict: 'E',
@@ -96,10 +100,37 @@ app.directive('productDescription', function() {
     };
 });
 
+
 app.directive('productSpecs', function() {
     return {
-        restrict: 'E',
+        restrict: 'A',
         templateUrl: 'product-specs.html'
+    };
+});
+
+app.directive('productReviews', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'product-reviews.html'
+    };
+});
+
+app.directive('productPanels', function() {
+    return{
+        restrict: 'E',
+        templateUrl: 'product-panels.html',
+        controller: function() {
+          this.tab = 1;
+
+          this.selectTab = function(setTab) {
+            this.tab = setTab;
+          };
+
+          this.isSelected = function(checkTab) {
+            return this.tab === checkTab;
+          };
+      },
+        controllerAs: 'panel'
     };
 });
 
