@@ -19,7 +19,8 @@
 
       <div ng-hide="product.soldOut">
         
-        <h3>{{ product.name }} <em class="pull-right">{{ product.price | currency }}</em>
+        <h3>{{ product.name }}
+            <em class="pull-right">{{ product.price | currency }}</em>
         </h3>
 
         <p> {{ product.description }} </p>
@@ -61,7 +62,7 @@
                       <blockquote>
                         <strong>Stars: {{ review.stars }}</strong>
                         <p>{{ review.body }}</p>
-                        <cite class="clearfix">by: {{ review.author }}</cite>
+                        <cite class="clearfix">by: {{ review.author }} on {{ review.createdOn | date }}</cite>
                       </blockquote>
                     </li>
                    </ul>
@@ -70,7 +71,7 @@
                     <blockquote>
                         <strong>Stars: {{ reviewCtrl.review.stars }}</strong>
                         <p>{{ reviewCtrl.review.body }}</p>
-                          <cite class="clearfix">by: {{ reviewCtrl.review.author }}</cite>
+                        <cite class="clearfix">by: {{ reviewCtrl.review.author }} on {{ reviewCtrl.review.createdOn | date }}</cite>
                     </blockquote>
 
                    <h4>Submit a Review</h4>
@@ -100,9 +101,9 @@
 
         </ul>
 
-      <div class="panel" ng-show="panel.isSelected(1)">
-        <h4>Description</h4>
-        <p>{{ product.description }} </p>
+      <div class="panel">
+          <product-description ng-show="panel.isSelected(1)"></product-description>
+          <product-specs ng-show="panel.isSelected(2)"></product-specs>
       </div>
 
     </section>
