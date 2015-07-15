@@ -25,22 +25,11 @@
 
         <p> {{ product.description }} </p>
 
-        <div class="gallery" ng-controller="GalleryController as gallery" ng-show="product.images.length">
-          <div class="img-wrap">
-              <img ng-src="{{ product.images[gallery.current] }} "/>
-          </div>
-          <ul class="img-thumbnails clearfix list-inline thumbs">
-
-            <li class="small-image pull-left thumbnail" ng-repeat="image in product.images">
-              <img ng-src="{{ image }}" />
-            </li>
-
-          </ul>
-        </div>
+        <product-gallery></product-gallery> 
 
         <button ng-show="product.canPurchase"> Add to Cart </button>
 
-      <product-panels></product-panels>
+        <product-panels></product-panels>
 
     </div>
 
